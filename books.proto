@@ -1,0 +1,28 @@
+syntax="proto3";
+
+
+message GenreRequest
+{
+    int32 user_id = 1;
+    string category = 2;
+}
+
+message BookRecommendation
+{
+    int32 id=1;
+    string title=2;
+    string author=3;
+    string category=4;
+}
+
+// message GenreResponse
+// {
+//     repeated BookRecommendation recommendations=1;
+// }
+
+service Recommendations
+{
+    rpc Recommend (GenreRequest) returns (BookRecommendation);
+}
+
+//python -m grpc_tools.protoc -I. --python_out=. --grpc_python_out=. books.proto
